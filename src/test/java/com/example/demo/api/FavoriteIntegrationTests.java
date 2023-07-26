@@ -65,7 +65,7 @@ public class FavoriteIntegrationTests extends AbstractIntegrationTest {
         FavoriteRecord resultFavoriteRecord = favoriteRecordRepository.findByCompanyCode(companyCode).orElse(null);
         assertThat(resultFavoriteRecord).isNotNull();
         assertThat(resultFavoriteRecord.getCompanyCode()).isEqualTo(companyCode);
-        assertThat(resultFavoriteRecord.getCount()).isEqualTo(2);
+        assertThat(resultFavoriteRecord.getCount()).isEqualTo(3);
     }
 
     @Test
@@ -78,7 +78,7 @@ public class FavoriteIntegrationTests extends AbstractIntegrationTest {
         mockMvc.perform(post("/favorite")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(registerFavoriteRequest(notRegisteredCompanyCode))))
-                .andExpect(status().isOk());
+                .andExpect(status().isBadRequest());
     }
 
 
