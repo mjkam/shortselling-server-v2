@@ -65,7 +65,7 @@ public class FavoriteIntegrationTests extends AbstractIntegrationTest {
         FavoriteRecord resultFavoriteRecord = favoriteRecordRepository.findByCompanyCode(companyCode).orElse(null);
         assertThat(resultFavoriteRecord).isNotNull();
         assertThat(resultFavoriteRecord.getCompanyCode()).isEqualTo(companyCode);
-        assertThat(resultFavoriteRecord.getCount()).isEqualTo(3);
+        assertThat(resultFavoriteRecord.getCount()).isEqualTo(2);
     }
 
     @Test
