@@ -82,6 +82,11 @@ public class FavoriteIntegrationTests extends AbstractIntegrationTest {
 //    }
 
 
+    @Test
+    @DisplayName("failing test")
+    void go() {
+        assertThat(1).isEqualTo(2);
+    }
 
 
     @Test
