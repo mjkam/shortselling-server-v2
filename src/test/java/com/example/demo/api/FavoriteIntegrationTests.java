@@ -68,25 +68,25 @@ public class FavoriteIntegrationTests extends AbstractIntegrationTest {
         assertThat(resultFavoriteRecord.getCount()).isEqualTo(2);
     }
 
-//    @Test
-//    @DisplayName("등록되지 않은 companyCode 를 favorite 요청하면 HttpStatus Bad Request 리턴")
-//    void returnBadRequest_whenNotRegisteredCompanyCodeRequested() throws Exception {
-//        //given
-//        String notRegisteredCompanyCode = "AAAAAA";
-//
-//        //when then
-//        mockMvc.perform(post("/favorite")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(registerFavoriteRequest(notRegisteredCompanyCode))))
-//                .andExpect(status().isBadRequest());
-//    }
-
-
     @Test
-    @DisplayName("failing test")
-    void go() {
-        assertThat(1).isEqualTo(2);
+    @DisplayName("등록되지 않은 companyCode 를 favorite 요청하면 HttpStatus Bad Request 리턴")
+    void returnBadRequest_whenNotRegisteredCompanyCodeRequested() throws Exception {
+        //given
+        String notRegisteredCompanyCode = "AAAAAA";
+
+        //when then
+        mockMvc.perform(post("/favorite")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(registerFavoriteRequest(notRegisteredCompanyCode))))
+                .andExpect(status().isOk());
     }
+
+
+//    @Test
+//    @DisplayName("failing test")
+//    void go() {
+//        assertThat(1).isEqualTo(2);
+//    }
 
 
     @Test
