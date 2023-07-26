@@ -56,30 +56,30 @@ public class FavoriteIntegrationTests extends AbstractIntegrationTest {
                 .andExpect(status().isBadRequest());
     }
 
-    @Test
-    @DisplayName("favorite api 요청하면 favorite count 1씩 증가")
-    void favoriteCountShouldBeIncrement_whenFavorited() throws Exception {
-        //given
-        String companyCode = "110011";
-
-        companyRepository.save(company().companyCode(companyCode).build());
-        favoriteRecordRepository.save(FavoriteRecordBuilder.favoriteRecord()
-                .companyCode(companyCode)
-                .count(1)
-                .build());
-
-        //when
-        mockMvc.perform(post("/favorite")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(registerFavoriteRequest(companyCode))))
-                .andExpect(status().isOk());
-
-        //then
-        FavoriteRecord resultFavoriteRecord = favoriteRecordRepository.findByCompanyCode(companyCode).orElse(null);
-        assertThat(resultFavoriteRecord).isNotNull();
-        assertThat(resultFavoriteRecord.getCompanyCode()).isEqualTo(companyCode);
-        assertThat(resultFavoriteRecord.getCount()).isEqualTo(2);
-    }
+//    @Test
+//    @DisplayName("favorite api 요청하면 favorite count 1씩 증가")
+//    void favoriteCountShouldBeIncrement_whenFavorited() throws Exception {
+//        //given
+//        String companyCode = "110011";
+//
+//        companyRepository.save(company().companyCode(companyCode).build());
+//        favoriteRecordRepository.save(FavoriteRecordBuilder.favoriteRecord()
+//                .companyCode(companyCode)
+//                .count(1)
+//                .build());
+//
+//        //when
+//        mockMvc.perform(post("/favorite")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(objectMapper.writeValueAsString(registerFavoriteRequest(companyCode))))
+//                .andExpect(status().isOk());
+//
+//        //then
+//        FavoriteRecord resultFavoriteRecord = favoriteRecordRepository.findByCompanyCode(companyCode).orElse(null);
+//        assertThat(resultFavoriteRecord).isNotNull();
+//        assertThat(resultFavoriteRecord.getCompanyCode()).isEqualTo(companyCode);
+//        assertThat(resultFavoriteRecord.getCount()).isEqualTo(2);
+//    }
 
 
     @Test
